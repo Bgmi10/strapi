@@ -10,16 +10,18 @@
     "strapi": "strapi",
     "deploy": "strapi deploy"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.25.3",
-    "@strapi/plugin-users-permissions": "4.25.3",
-    "@strapi/plugin-i18n": "4.25.3",
     "@strapi/plugin-cloud": "4.25.3",
+    "@strapi/plugin-i18n": "4.25.3",
+    "@strapi/plugin-users-permissions": "4.25.3",
+    "@strapi/strapi": "4.25.3",
     "better-sqlite3": "8.6.0",
+    "mongoose": "^8.5.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "strapi-hook-mongoose": "^3.0.0-beta.17.8",
+    "stripe": "^16.5.0",
     "styled-components": "5.3.3"
   },
   "author": {

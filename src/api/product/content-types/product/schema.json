@@ -4,7 +4,8 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product"
+    "displayName": "Product",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,21 +21,31 @@
     "price": {
       "type": "integer"
     },
-    "imges": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
     "stock": {
       "type": "integer"
     },
     "category": {
       "type": "string"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "actualprice": {
+      "type": "integer"
+    },
+    "offertag": {
+      "type": "integer"
+    },
+    "deliveryCharges": {
+      "type": "integer"
     }
   }
 }
