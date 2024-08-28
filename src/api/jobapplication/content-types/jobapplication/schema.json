@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobapplications",
+  "info": {
+    "singularName": "jobapplication",
+    "pluralName": "jobapplications",
+    "displayName": "jobapplication",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "jobtitle": {
+      "type": "string"
+    },
+    "companyname": {
+      "type": "string"
+    },
+    "yoe": {
+      "type": "integer"
+    },
+    "skills": {
+      "type": "json"
+    },
+    "skilllevel": {
+      "type": "enumeration",
+      "enum": [
+        "Intermediate",
+        "Beginner",
+        "Advance"
+      ]
+    },
+    "resume": {
+      "type": "text"
+    },
+    "userid": {
+      "type": "string"
+    },
+    "jobid": {
+      "type": "integer"
+    }
+  }
+}

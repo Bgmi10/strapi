@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "postjobs",
+  "info": {
+    "singularName": "postjob",
+    "pluralName": "postjobs",
+    "displayName": "postjob",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "state": {
+      "type": "string"
+    },
+    "name": {
+      "type": "text"
+    },
+    "img": {
+      "type": "text"
+    },
+    "applications": {
+      "type": "integer"
+    },
+    "jobopen": {
+      "type": "boolean"
+    },
+    "jobrequirements": {
+      "type": "json"
+    },
+    "jobapplication": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jobapplication.jobapplication"
+    },
+    "jobid": {
+      "type": "integer"
+    }
+  }
+}

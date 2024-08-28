@@ -362,38 +362,37 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiAddressAddress extends Schema.CollectionType {
-  collectionName: 'addresses';
+export interface ApiJobapplicationJobapplication extends Schema.CollectionType {
+  collectionName: 'jobapplications';
   info: {
-    singularName: 'address';
-    pluralName: 'addresses';
-    displayName: 'Address';
+    singularName: 'jobapplication';
+    pluralName: 'jobapplications';
+    displayName: 'jobapplication';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    mobilenumber: Attribute.Integer;
-    address: Attribute.Text;
-    pincode: Attribute.Integer;
-    locality: Attribute.String;
-    city: Attribute.String;
-    state: Attribute.String;
-    userid: Attribute.Integer;
-    user: Attribute.String & Attribute.Unique;
+    jobtitle: Attribute.String;
+    companyname: Attribute.String;
+    yoe: Attribute.Integer;
+    skills: Attribute.JSON;
+    skilllevel: Attribute.Enumeration<['Intermediate', 'Beginner', 'Advance']>;
+    resume: Attribute.Text;
+    userid: Attribute.String;
+    jobid: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::address.address',
+      'api::jobapplication.jobapplication',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::address.address',
+      'api::jobapplication.jobapplication',
       'oneToOne',
       'admin::user'
     > &
@@ -401,39 +400,43 @@ export interface ApiAddressAddress extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
+export interface ApiPostjobPostjob extends Schema.CollectionType {
+  collectionName: 'postjobs';
   info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'Product';
+    singularName: 'postjob';
+    pluralName: 'postjobs';
+    displayName: 'postjob';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    title: Attribute.String;
     desc: Attribute.Text;
-    price: Attribute.Integer;
-    stock: Attribute.Integer;
-    category: Attribute.String;
-    img: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    actualprice: Attribute.Integer;
-    offertag: Attribute.Integer;
-    deliveryCharges: Attribute.Integer;
-    groupimgs: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    state: Attribute.String;
+    name: Attribute.Text;
+    img: Attribute.Text;
+    applications: Attribute.Integer;
+    jobopen: Attribute.Boolean;
+    jobrequirements: Attribute.JSON;
+    jobapplication: Attribute.Relation<
+      'api::postjob.postjob',
+      'manyToOne',
+      'api::jobapplication.jobapplication'
+    >;
+    jobid: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::product.product',
+      'api::postjob.postjob',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::product.product',
+      'api::postjob.postjob',
       'oneToOne',
       'admin::user'
     > &
@@ -877,8 +880,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::address.address': ApiAddressAddress;
-      'api::product.product': ApiProductProduct;
+      'api::jobapplication.jobapplication': ApiJobapplicationJobapplication;
+      'api::postjob.postjob': ApiPostjobPostjob;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
