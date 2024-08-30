@@ -382,6 +382,11 @@ export interface ApiJobapplicationJobapplication extends Schema.CollectionType {
     resume: Attribute.Text;
     userid: Attribute.String;
     jobid: Attribute.Integer;
+    desc: Attribute.Text;
+    img: Attribute.Text;
+    status: Attribute.Enumeration<
+      ['Interviewing', 'Applied', 'Rejected', 'Shortlisted']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -426,6 +431,7 @@ export interface ApiPostjobPostjob extends Schema.CollectionType {
       'api::jobapplication.jobapplication'
     >;
     jobid: Attribute.Integer;
+    recruiterid: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

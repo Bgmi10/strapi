@@ -43,6 +43,9 @@
     },
     "jobid": {
       "type": "integer"
+    },
+    "recruiterid": {
+      "type": "string"
     }
   }
 }

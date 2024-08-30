@@ -40,6 +40,21 @@
     },
     "jobid": {
       "type": "integer"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "img": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Interviewing",
+        "Applied",
+        "Rejected",
+        "Shortlisted"
+      ]
     }
   }
 }
