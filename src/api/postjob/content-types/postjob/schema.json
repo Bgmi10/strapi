@@ -4,8 +4,8 @@
   "info": {
     "singularName": "postjob",
     "pluralName": "postjobs",
-    "displayName": "postjob",
-    "description": ""
+    "displayName": "Post Job",
+    "description": "Collection for job postings"
   },
   "options": {
     "draftAndPublish": true
@@ -13,39 +13,46 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "desc": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "state": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "name": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "img": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "applications": {
-      "type": "integer"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::jobapplication.jobapplication",
+      "mappedBy": "job"
     },
     "jobopen": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "jobrequirements": {
       "type": "json"
     },
-    "jobapplication": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::jobapplication.jobapplication"
-    },
     "jobid": {
-      "type": "integer"
+      "type": "integer",
+      "unique": true,
+      "required": true
     },
     "recruiterid": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

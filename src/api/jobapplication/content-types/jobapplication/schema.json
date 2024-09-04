@@ -4,8 +4,8 @@
   "info": {
     "singularName": "jobapplication",
     "pluralName": "jobapplications",
-    "displayName": "jobapplication",
-    "description": ""
+    "displayName": "Job Application",
+    "description": "Collection for job applications"
   },
   "options": {
     "draftAndPublish": true
@@ -13,33 +13,39 @@
   "pluginOptions": {},
   "attributes": {
     "jobtitle": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "companyname": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "yoe": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "skills": {
-      "type": "json"
+      "type": "json",
+      "required": true
     },
     "skilllevel": {
       "type": "enumeration",
-      "enum": [
-        "Intermediate",
-        "Beginner",
-        "Advance"
-      ]
+      "enum": ["Intermediate", "Beginner", "Advance"],
+      "required": true
     },
     "resume": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "userid": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
-    "jobid": {
-      "type": "integer"
+    "job": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::postjob.postjob",
+      "inversedBy": "applications"
     },
     "desc": {
       "type": "text"
@@ -49,12 +55,9 @@
     },
     "status": {
       "type": "enumeration",
-      "enum": [
-        "Interviewing",
-        "Applied",
-        "Rejected",
-        "Shortlisted"
-      ]
+      "enum": ["Interviewing", "Applied", "Rejected", "Shortlisted"],
+      "default": "Applied",
+      "required": true
     }
   }
 }

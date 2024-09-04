@@ -367,26 +367,33 @@ export interface ApiJobapplicationJobapplication extends Schema.CollectionType {
   info: {
     singularName: 'jobapplication';
     pluralName: 'jobapplications';
-    displayName: 'jobapplication';
-    description: '';
+    displayName: 'Job Application';
+    description: 'Collection for job applications';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    jobtitle: Attribute.String;
-    companyname: Attribute.String;
-    yoe: Attribute.Integer;
-    skills: Attribute.JSON;
-    skilllevel: Attribute.Enumeration<['Intermediate', 'Beginner', 'Advance']>;
-    resume: Attribute.Text;
-    userid: Attribute.String;
-    jobid: Attribute.Integer;
+    jobtitle: Attribute.String & Attribute.Required;
+    companyname: Attribute.String & Attribute.Required;
+    yoe: Attribute.Integer & Attribute.Required;
+    skills: Attribute.JSON & Attribute.Required;
+    skilllevel: Attribute.Enumeration<['Intermediate', 'Beginner', 'Advance']> &
+      Attribute.Required;
+    resume: Attribute.Text & Attribute.Required;
+    userid: Attribute.String & Attribute.Required;
+    job: Attribute.Relation<
+      'api::jobapplication.jobapplication',
+      'manyToOne',
+      'api::postjob.postjob'
+    >;
     desc: Attribute.Text;
     img: Attribute.Text;
     status: Attribute.Enumeration<
       ['Interviewing', 'Applied', 'Rejected', 'Shortlisted']
-    >;
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'Applied'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -410,28 +417,27 @@ export interface ApiPostjobPostjob extends Schema.CollectionType {
   info: {
     singularName: 'postjob';
     pluralName: 'postjobs';
-    displayName: 'postjob';
-    description: '';
+    displayName: 'Post Job';
+    description: 'Collection for job postings';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
-    desc: Attribute.Text;
-    state: Attribute.String;
-    name: Attribute.Text;
-    img: Attribute.Text;
-    applications: Attribute.Integer;
-    jobopen: Attribute.Boolean;
-    jobrequirements: Attribute.JSON;
-    jobapplication: Attribute.Relation<
+    title: Attribute.String & Attribute.Required;
+    desc: Attribute.Text & Attribute.Required;
+    state: Attribute.String & Attribute.Required;
+    name: Attribute.Text & Attribute.Required;
+    img: Attribute.Text & Attribute.Required;
+    applications: Attribute.Relation<
       'api::postjob.postjob',
-      'manyToOne',
+      'oneToMany',
       'api::jobapplication.jobapplication'
     >;
-    jobid: Attribute.Integer;
-    recruiterid: Attribute.String;
+    jobopen: Attribute.Boolean & Attribute.DefaultTo<true>;
+    jobrequirements: Attribute.JSON;
+    jobid: Attribute.Integer & Attribute.Required & Attribute.Unique;
+    recruiterid: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
