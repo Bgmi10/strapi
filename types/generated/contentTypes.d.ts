@@ -394,6 +394,8 @@ export interface ApiJobapplicationJobapplication extends Schema.CollectionType {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'Applied'>;
+    username: Attribute.String;
+    hasverifiedphonenumber: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

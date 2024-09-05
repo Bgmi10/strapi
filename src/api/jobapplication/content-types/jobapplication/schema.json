@@ -30,7 +30,11 @@
     },
     "skilllevel": {
       "type": "enumeration",
-      "enum": ["Intermediate", "Beginner", "Advance"],
+      "enum": [
+        "Intermediate",
+        "Beginner",
+        "Advance"
+      ],
       "required": true
     },
     "resume": {
@@ -55,9 +59,20 @@
     },
     "status": {
       "type": "enumeration",
-      "enum": ["Interviewing", "Applied", "Rejected", "Shortlisted"],
+      "enum": [
+        "Interviewing",
+        "Applied",
+        "Rejected",
+        "Shortlisted"
+      ],
       "default": "Applied",
       "required": true
+    },
+    "username": {
+      "type": "string"
+    },
+    "hasverifiedphonenumber": {
+      "type": "boolean"
     }
   }
 }
